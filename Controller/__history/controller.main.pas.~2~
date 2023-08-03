@@ -1,0 +1,10 @@
+unit controller.main;
+
+interface
+  TMainController = class
+
+  end;
+
+implementation
+
+end.

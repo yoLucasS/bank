@@ -1,0 +1,28 @@
+program ProjetoBanco;
+
+uses
+  Vcl.Forms,
+  view.login in 'View\view.login.pas' {FormLogin},
+  classLogin in 'Model\classLogin.pas',
+  Conn in 'bd\Conn.pas' {DmConn: TDataModule},
+  classQuery in 'Model\classQuery.pas',
+  view.abrirConta in 'View\view.abrirConta.pas' {FormAbrirConta},
+  classPessoaFisica in 'Model\classPessoaFisica.pas',
+  view.main in 'View\view.main.pas' {FormMain},
+  view.Transf in 'View\view.Transf.pas' {FormTransferencia},
+  classTransacoes in 'Model\classTransacoes.pas',
+  controller.main in 'Controller\controller.main.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(TFormTransferencia, FormTransferencia);
+  Application.CreateForm(TFormMain, FormMain);
+  ReportMemoryLeaksOnShutdown:=true;
+  Application.CreateForm(TDmConn, DmConn);
+  Application.CreateForm(TFormAbrirConta, FormAbrirConta);
+  Application.Run;
+end.

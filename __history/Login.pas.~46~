@@ -1,0 +1,76 @@
+unit Login;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg, Vcl.StdCtrls, Vcl.Mask, classLogin;
+
+type
+  TFormLogin = class(TForm)
+    pnlContainer: TPanel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Logo: TImage;
+    Image3: TImage;
+    pnlLogar: TPanel;
+    Label1: TLabel;
+    Image1: TImage;
+    Image2: TImage;
+    Image4: TImage;
+    Label2: TLabel;
+    edtSenha: TMaskEdit;
+    Label3: TLabel;
+    edtUser: TMaskEdit;
+    Label4: TLabel;
+    lblCliqueAqui: TLabel;
+    Label5: TLabel;
+    procedure Image3Click(Sender: TObject);
+    procedure pnlLogarMouseEnter(Sender: TObject);
+    procedure pnlLogarMouseLeave(Sender: TObject);
+    procedure pnlLogarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormLogin: TFormLogin;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormLogin.Image3Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TFormLogin.pnlLogarClick(Sender: TObject);
+var
+  notNull:Boolean;
+  Login:TLogin;
+begin
+  Login:=TLogin.Create;
+  notNull:=(edtUser.Text<>'') and (edtSenha.Text<>'');
+  if notNull then begin
+    Login.Conta:=edtUser.Text;
+    Login.Cpf:=edtSenha.Text;
+    Login.validarLogin;
+  end else showmessage('Digite um valor valido');
+  Login.Free;
+end;
+
+procedure TFormLogin.pnlLogarMouseEnter(Sender: TObject);
+begin
+  pnlLogar.Color:=clnavy;
+end;
+
+procedure TFormLogin.pnlLogarMouseLeave(Sender: TObject);
+begin
+  pnlLogar.Color:=$00FF8000;
+end;
+
+end.

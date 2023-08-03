@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/06/22 15:40:00.000.720,=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/07 09:10:16.000.744,=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/07 09:21:14.000.490,=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 15:09:09.000.654,=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 15:13:37.000.548,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Login.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 15:13:37.000.548,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Login.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/07/17 15:13:44.000.645,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\ProjetoBanco.dproj=C:\Users\User\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/07/18 09:20:06.000.312,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/07/18 09:20:21.000.536,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Classes\classLogin.pas</Transaction>
+    <Transaction>2023/07/18 09:21:52.000.877,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/07/18 09:22:07.000.352,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Classes\classQuery.pas</Transaction>
+    <Transaction>2023/07/18 11:47:51.000.826,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/07/18 11:49:14.000.262,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\form.abrirConta.dfm</Transaction>
+    <Transaction>2023/07/18 11:49:14.000.262,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\form.abrirConta.pas</Transaction>
+    <Transaction>2023/07/18 11:49:39.000.600,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\form.abrirConta.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.abrirConta.dfm</Transaction>
+    <Transaction>2023/07/18 11:49:39.000.600,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\form.abrirConta.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.abrirConta.pas</Transaction>
+    <Transaction>2023/07/18 11:49:51.000.640,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Login.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.login.dfm</Transaction>
+    <Transaction>2023/07/18 11:49:51.000.640,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Login.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.login.pas</Transaction>
+    <Transaction>2023/07/18 14:44:23.000.880,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/07/18 14:44:40.000.244,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Classes\classPessoaFisica.pas</Transaction>
+    <Transaction>2023/07/19 14:52:55.000.917,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 14:53:08.000.333,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.mai.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.dfm</Transaction>
+    <Transaction>2023/07/19 14:53:08.000.333,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.mai.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 14:53:20.000.082,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.main.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.mai.pas</Transaction>
+    <Transaction>2023/07/19 14:53:20.000.082,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.main.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.mai.dfm</Transaction>
+    <Transaction>2023/07/21 10:47:16.000.669,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/07/21 10:47:34.000.526,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.Transf.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/07/21 10:47:34.000.526,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\view.Transf.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.dfm</Transaction>
+    <Transaction>2023/07/25 08:55:31.000.963,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/07/25 08:55:43.000.406,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Classes\classTransacoes.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/08/01 09:50:03.000.557,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/08/01 09:50:24.000.318,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Controller\controller.main.pas</Transaction>
+    <Transaction>2023/08/01 09:54:08.000.110,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Controller\controller.main.pas=</Transaction>
+    <Transaction>2023/08/01 16:03:48.000.627,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/08/03 08:39:02.000.312,=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/08/03 08:39:39.000.849,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\View\view.cadChavePix.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.pas</Transaction>
+    <Transaction>2023/08/03 08:39:39.000.849,C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\View\view.cadChavePix.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\sistemaBanco\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
