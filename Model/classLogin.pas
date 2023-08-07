@@ -15,7 +15,7 @@ type
     public
       property Conta: string read FConta write setConta;
       property Cpf: string read FCpf write setCpf;
-      function validarLogin:TFDQuery;
+      procedure validarLogin;
   end;
 
 implementation
@@ -46,7 +46,7 @@ begin
   end;
 end;
 
-function TLogin.validarLogin:TFDQuery;
+procedure TLogin.validarLogin;
 var
   Query:TFDQuery;
   Q:TQuery;
@@ -65,9 +65,8 @@ begin
   end else begin
     showmessage('Usuário ou senha incorretos');
   end;
-  result:=Query;
   Q.Free;
-  //trocar para boolean trocar para procedure
+  Query.Free;
 end;
 
 end.

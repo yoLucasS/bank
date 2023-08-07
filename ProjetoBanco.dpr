@@ -18,11 +18,11 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  //ReportMemoryLeaksOnShutdown:=(DebugHook<>0);
   Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TFormTransferencia, FormTransferencia);
   Application.CreateForm(TFormMain, FormMain);
   Application.CreateForm(TFormCadPix, FormCadPix);
-  ReportMemoryLeaksOnShutdown:=true;
   Application.CreateForm(TDmConn, DmConn);
   Application.CreateForm(TFormAbrirConta, FormAbrirConta);
   Application.Run;

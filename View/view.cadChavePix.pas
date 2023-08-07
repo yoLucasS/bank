@@ -33,7 +33,7 @@ var
 
 begin
   iTransacoes:=TTransacoes.Create;
-  iTransacoes.cadChavePix(idUser, edtChavePix.Text);
+  iTransacoes.cadastrarChavePix(idUser, edtChavePix.Text);
   iTransacoes.Free;
   edtChavePix.Clear;
 end;

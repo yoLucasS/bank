@@ -1,0 +1,188 @@
+unit classTransacoes;
+
+interface
+
+uses
+  FireDAC.Comp.Client, classQuery, System.SysUtils, Vcl.Dialogs, Vcl.Forms, 
+  Winapi.Windows, System.Generics.Collections;
+type
+  TTransacoes = class
+    private
+    FidUser: integer;
+    FsaldoConta: string;
+    FNome: string;
+    FSobrenome: string;
+    FTipo: string;
+    FData: TDate;
+    FHorario: TTime;
+    public
+      property idUserLogado: integer read FidUser write FidUser;
+      property saldoConta: string read FsaldoConta write FsaldoConta;
+      property Nome: string read FNome write FNome;
+      property Sobrenome: string read FSobrenome write FSobrenome;
+      property Tipo: string read FTipo write FTipo;
+      property Data: TDate read FData write FData;
+      property Horario: TTime read FHorario write FHorario;
+
+      function selectChavePix(chave:string; idLogado:integer):Integer;
+      function realizarPix(valor:double; ID, IdC: Integer):Boolean;
+      procedure depositar(idU:integer; valorTransferencia:string);
+      procedure saque(idU:integer; valorTransferencia:string);
+      procedure logMovimento(tipo:string; idConta:integer;valor:string);
+      function selectMovimento(idContaUser:integer):TOBjectList<TTransacoes>;
+      function selectSaldo(idLogado:integer):double;
+      procedure cadastrarChavePix(idUser:integer; chave:string);
+    end;
+implementation
+
+{ TTransacoes }
+
+procedure TTransacoes.cadastrarChavePix(idUser: integer; chave: string);
+var
+  Query:TQuery;
+  Q:TQuery;
+begin
+  Q:=TQuery.create('chaves_pix', 'chave');
+  var selectQ:=Q.select('WHERE chave = '+QuotedStr(chave)+'');
+  try
+  if selectQ.IsEmpty then begin
+    Query:=TQuery.create('chaves_pix','chave, id_user');
+    Query.insert(quotedstr(chave)+','+idUser.ToString);
+    showmessage('Chave Pix inserida com sucesso!');
+    Query.Free;
+  end else showmessage('Chave pix ja existe');
+  finally
+    Q.Free;
+    selectQ.Free;
+  end;
+end;
+
+procedure TTransacoes.depositar(idU: integer; valorTransferencia:string);
+var
+  Query:TQuery;
+  valor:string;
+begin
+  Query:=TQuery.create('conta','');
+  valor:=StringReplace(valorTransferencia, ',','.', [rfReplaceAll]);
+  Query.Update('saldo = saldo + '+valor+'',' WHERE id_conta = '+idU.tostring+'');
+  logMovimento('deposito', idU, valor);
+  showmessage('Deposito feito com sucesso!');
+  query.Free;
+end;
+
+procedure TTransacoes.logMovimento(tipo: string; idConta: integer;valor:string);
+var
+  Query:TQuery;
+begin
+  Query:=TQuery.create('movimentos','tipo, conta_id, data, horario, valor');
+  Query.insert(quotedstr(tipo)+', '+idConta.ToString +', '''+Formatdatetime('YYYY-mm-dd', Now)+''', '''+formatdatetime('HH:MM:SS', Now)+''+valor+'');
+  Query.Free;
+end;
+
+function TTransacoes.realizarPix(valor: double; ID, IdC: Integer):Boolean;
+var
+  Query:TQuery;
+  valorFormatado:string;
+begin
+  result:=false;
+  if selectSaldo(idC) >= valor then begin
+    Query:=TQuery.create('conta','');
+    try
+      valorFormatado:=StringReplace(valor.ToString, ',','.', [rfReplaceAll]);
+      Query.Update('saldo = saldo + '+valorFormatado+'', ' WHERE id_conta = '+inttostr(ID)+'');
+    finally
+      Query.Free;
+    end;
+    Query:=TQuery.create('conta','');
+    try
+      Query.Update('saldo = saldo - '+valorFormatado+'', ' WHERE id_conta = '+IdC.ToString+'');
+      result:=true;
+      Query.Free;
+    finally
+      logMovimento('Pix enviado',IdC, valorFormatado);
+      logMovimento('Pix recebido',Id, valorFormatado);
+    end;
+    showmessage('Transferência realizada com sucesso!');
+  end else showmessage('Saldo insuficiente');
+end;
+
+procedure TTransacoes.saque(idU: integer; valorTransferencia: string);
+var
+  Query:TQuery;
+  valorFormatado:string;
+begin
+  Query:=TQuery.create('conta','');
+  valorFormatado:=StringReplace(valorTransferencia, ',','.', [rfReplaceAll]);
+  try
+    if selectSaldo(idU) >= valorTransferencia.ToDouble then begin
+      Query.Update('saldo = saldo - '+valorFormatado+'',' WHERE id_conta = '+idU.tostring+'');
+      logMovimento('Saque',idU, valorFormatado);
+      showmessage('Saque feito com sucesso!');
+    end else showmessage('Saldo insuficiente');
+  finally
+    Query.Free;
+  end;
+end;
+
+function TTransacoes.selectChavePix(chave: string; idLogado:integer): Integer;
+var
+  Q:TFDQuery;
+  Query:TQuery;
+begin
+  Query:=TQuery.create('chaves_pix LEFT JOIN usuarios on id_user = user_id LEFT JOIN conta on conta.id_pf = usuarios.id_pf', '*');
+  Q:=Query.select('WHERE chave = '+Quotedstr(chave)+'');
+  if Q.FieldByName('user_id').AsInteger = idLogado  then begin
+    result:=0;
+  end else begin
+    result:=q.FieldByName('id_conta').AsInteger;
+  end;
+    Q.Free;
+    Query.Free;
+end;
+
+function TTransacoes.selectMovimento(idContaUser: Integer): TObjectList<TTransacoes>;
+var
+  Q: TFDQuery;
+  Query: TQuery;
+  listMovimentos: TObjectList<TTransacoes>;
+  movimento: TTransacoes;
+begin
+  listMovimentos:=TObjectList<TTransacoes>.Create;
+
+  Query:=TQuery.Create('movimentos LEFT JOIN conta on conta_id = id_conta LEFT JOIN pessoa_fisica on id_pf = pf_id', 'nome, sobrenome, tipo, data, horario');
+  Q:=Query.select('WHERE movimentos.conta_id = ' + idContaUser.ToString + ' ORDER BY id_mov desc');
+  try
+    while not Q.Eof do
+    begin
+      movimento:=TTransacoes.Create;
+      movimento.Nome:=Q.FieldByName('nome').AsString;
+      movimento.Sobrenome:=Q.FieldByName('sobrenome').AsString;
+      movimento.Tipo:=Q.FieldByName('tipo').AsString;
+      movimento.Data:=Q.FieldByName('data').AsDateTime;
+      movimento.Horario:=Q.FieldByName('horario').AsDateTime;
+
+      listMovimentos.Add(movimento);
+
+      Q.Next;
+    end;
+  finally
+    Query.Free;
+    Q.Free;
+  end;
+  Result:=listMovimentos;
+end;
+
+
+function TTransacoes.selectSaldo(idLogado:integer): double;
+var
+  Q:TFDQuery;
+  Query:TQuery;
+begin
+  Query:=TQuery.create('conta', '*');
+  Q:=Query.select('WHERE id_conta = '+idLogado.tostring+'');
+  result:=q.FieldByName('saldo').AsFloat;
+  Query.Free;
+  Q.Free;
+end;
+
+end.

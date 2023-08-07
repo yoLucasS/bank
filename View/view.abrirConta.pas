@@ -47,7 +47,6 @@ end;
 procedure TFormAbrirConta.pnlLogarClick(Sender: TObject);
 var
   Q:TPessoaFisica;
-  Query:TFDQuery;
 begin
    Q:=TPessoaFisica.Create;
   try
@@ -57,7 +56,7 @@ begin
     Q.Email:=Email.Text;
     Q.Cpf:=Cpf.Text;
     Q.Endereco:=Endereco.Text;
-    Query:=Q.insertPF;
+    Q.insertPF;
     for var i := 0 to self.ComponentCount -1 do begin
       if self.Components[i] is TLabeledEdit  then begin
         TLabeledEdit(self.Components[i]).Clear;
@@ -67,7 +66,6 @@ begin
     end;
   except
   end;
-    Query.Free;
     Q.Free;
 end;
 

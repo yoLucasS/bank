@@ -21,11 +21,10 @@ type
     pnlBuscarChave: TPanel;
     Label3: TLabel;
     Label4: TLabel;
-    edtValor: TEdit;
     Label5: TLabel;
+    edtValor: TMaskEdit;
     procedure iconCloseClick(Sender: TObject);
     procedure pnlBuscarChaveClick(Sender: TObject);
-    procedure edtValorChange(Sender: TObject);
     procedure pnlUpdateClick(Sender: TObject);
 
   private
@@ -48,30 +47,6 @@ implementation
 {$R *.dfm}
 uses
   view.main;
-
-
-
-procedure TFormTransferencia.edtValorChange(Sender: TObject);
-var
-  valor_digitado, valor_formatado: string;
-  valor: Double;
-begin
-  valor_digitado:=edtValor.Text;
-
-  valor_digitado:=StringReplace(valor_digitado, '.', '', [rfReplaceAll]);
-  valor_digitado:=StringReplace(valor_digitado, ',', '', [rfReplaceAll]);
-
-  if TryStrToFloat(valor_digitado, valor) then begin
-    valor_formatado:=FormatFloat('#,##0.00', valor / 100);
-
-    edtValor.Text:=valor_formatado;
-
-    edtValor.SelStart:=Length(edtValor.Text);
-  end else begin
-    edtValor.Text:='';
-  end;
-end;
-
 procedure TFormTransferencia.iconCloseClick(Sender: TObject);
 begin
   pnlPix.Visible:=false;
@@ -96,16 +71,16 @@ end;
 procedure TFormTransferencia.pnlUpdateClick(Sender: TObject);
 var
   transacao:TTransacoes;
-  Q:Double;
   formatFloat:string;
 begin
   formatFloat:=stringreplace(edtValor.Text,'.','',[rfReplaceAll]);
   transacao:=TTransacoes.Create;
-  Q:=transacao.realizarPix(StrToFloat(formatFloat), idR, idC,saldoConta);
-  transacao.Free;
-  showmessage('Transferência realizada com sucesso!');
-  close;
-  pnlPix.Visible:=false;
+  try
+    if transacao.realizarPix(StrToFloat(formatFloat), idR, idC) then
+      close;
+  finally
+    transacao.Free;
+  end;
 end;
 
 end.

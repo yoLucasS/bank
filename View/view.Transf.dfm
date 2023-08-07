@@ -215,20 +215,21 @@ object FormTransferencia: TFormTransferencia
         TabOrder = 0
         OnClick = pnlUpdateClick
       end
-      object edtValor: TEdit
-        Left = 118
-        Top = 68
-        Width = 99
+      object edtValor: TMaskEdit
+        Left = 119
+        Top = 69
+        Width = 82
         Height = 23
-        Alignment = taRightJustify
+        EditMask = '0000000000,00;1;_'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
+        Font.Color = clBtnText
         Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
+        MaxLength = 13
         ParentFont = False
         TabOrder = 1
-        OnChange = edtValorChange
+        Text = '          ,  '
       end
     end
   end

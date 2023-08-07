@@ -41,7 +41,6 @@ type
 
 var
   FormLogin: TFormLogin;
-    Q:TFDQuery;
 implementation
 
 uses
@@ -70,15 +69,13 @@ end;
 procedure TFormLogin.pnlLogarClick(Sender: TObject);
 var
   Login:TLogin;
-
 begin
   Login:=TLogin.Create;
   try
     Login.Conta:=edtUser.Text;
     Login.Cpf:=edtSenha.Text;
-    Q:=Login.validarLogin;
+    Login.validarLogin;
   finally
-    freeandnil(Q);
     freeandnil(Login);
   end;
 end;
